@@ -25,6 +25,7 @@
   "type": "module",
   "dependencies": {
     "@brewer/beerui": "^1.0.30-next.55",
+    "@sveltejs/adapter-vercel": "^1.0.0-next.58",
     "@sveltejs/site-kit": "^2.0.3",
     "axios": "^0.24.0",
     "eslint-plugin-svelte3": "^3.2.1",

@@ -13,7 +13,6 @@ import {
 
 export function loginOut(message = '退出成功') {
     log_out().then(res => {
-        // if (getToken()) openNotice({ message, type: 'success' })
         removeToken()
         goto('/login', { replaceState: true })
     }).catch(err => {
@@ -22,42 +21,13 @@ export function loginOut(message = '退出成功') {
     })
 }
 
-export function loginIn(query) {
+export async function loginIn(query) {
     LOGIN_LOADING_STATUS.set(true)
-    web_login(query).then(async res => {
-        TOKEN.set(res.token)
-        const current = await getCurrent()
-        if (current) {
-            openNotice({ message: '登录成功！', type: 'success' })
-            let _theme_menu = [] // 驾驶舱 权限路由
-            let _admin_menu = [] // 管理后台 权限路由
-            PERMISSION_ROUTER.subscribe(items => _admin_menu = items)
-            PERMISSION_THEME_ROUTER.subscribe(items => _theme_menu = items)
-            if (_theme_menu.length === 0 && _admin_menu.length === 0) {
-                openNotice({ message: '无菜单权限！', type: 'error' })
-                LOGIN_LOADING_STATUS.set(false)
-                return
-            }
-            if (_theme_menu.length > 0) {
-                goto(_theme_menu[0].path, { replaceState: true })
-                LOGIN_LOADING_STATUS.set(false)
-                return
-            }
-            if (_admin_menu.length > 0) {
-                const _menu = openPageRedirect(_admin_menu)
-                goto(_menu.path, { replaceState: true })
-                LOGIN_LOADING_STATUS.set(false)
-                return
-            }
-            goto('/', { replaceState: true })
-        } else {
-            LOGIN_LOADING_STATUS.set(false)
-        }
-    }).catch(error => {
-        LOGIN_LOADING_STATUS.set(false)
-        // 重复提示
-        // openNotice({ message: error, type: 'error' })
-    })
+    // 使用endpoints 模仿接口
+    const res = await fetch('/api/router',{method: 'post', body: JSON.stringify(query)})
+    const data = await res.json()
+    console.log(data);
+   
 }
 // 检测当前页面是否有权限查看 无权限跳到无权限页面
 export const isPermissionRoute = (path, layout) => {

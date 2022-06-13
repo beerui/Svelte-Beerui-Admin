@@ -1,8 +1,8 @@
 import preprocess from "svelte-preprocess";
-import adapter from '@sveltejs/adapter-static';
+import vercel from '@sveltejs/adapter-vercel';
 import path from "path";
 
-const subpackage = ['echarts', 'mo.umd']
+const subpackage = ['mo.umd']
 const config = {
     onwarn: (warning, handler) => {
         const { code, frame } = warning;
@@ -25,12 +25,7 @@ const config = {
         prerender: {
             default: true
         },
-        adapter: adapter({
-            pages: 'build',
-            assets: 'build',
-            fallback: null,
-            precompress : true
-        }),
+        adapter: vercel(),
         vite: () => ({
             // mode: 'production',
             // mode: 'development',
@@ -59,26 +54,26 @@ const config = {
                 }
             },
             build: {
-                rollupOptions: {
-                    onwarn: (warning, handler) => {
-                        const { code, frame } = warning;
-                        if (code === "css-unused-selector")
-                            return;
+                // rollupOptions: {
+                //     onwarn: (warning, handler) => {
+                //         const { code, frame } = warning;
+                //         if (code === "css-unused-selector")
+                //             return;
 
-                        handler(warning);
-                    },
-                    output: {
-                        manualChunks(id) {
-                            if (id.includes('node_modules')) {
-                                const hassSubpackage = subpackage.findIndex(val => id.indexOf(val) !== -1)
-                                if (hassSubpackage !== -1) {
-                                    return id.toString().split('node_modules/')[1].split('/')[0].toString()
-                                }
-                                return 'vendor'
-                            }
-                        }
-                    }
-                }
+                //         handler(warning);
+                //     },
+                //     output: {
+                //         manualChunks(id) {
+                //             if (id.includes('node_modules')) {
+                //                 const hassSubpackage = subpackage.findIndex(val => id.indexOf(val) !== -1)
+                //                 if (hassSubpackage !== -1) {
+                //                     return id.toString().split('node_modules/')[1].split('/')[0].toString()
+                //                 }
+                //                 return 'vendor'
+                //             }
+                //         }
+                //     }
+                // }
             }
         })
     },
