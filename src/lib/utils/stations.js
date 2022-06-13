@@ -1,0 +1,26 @@
+export default {
+    "type": "FeatureCollection",
+    "name": "闸站",
+    "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4490" } },
+    "features": [
+        { "type": "Feature", "properties": { "name": "迎恩门节制闸", "type": "2", "longitude": "120.56846490451323", "latitude": "30.01409704452006" }, "geometry": { "type": "Point", "coordinates": [ 120.56846490451323, 30.01409704452006 ] } },
+        { "type": "Feature", "properties": { "name": "小罗门泵站", "type": "1", "longitude": "120.59094250783289", "latitude": "29.982561528001984" }, "geometry": { "type": "Point", "coordinates": [ 120.59094250783289, 29.982561528001984 ] } },
+        { "type": "Feature", "properties": { "name": "南门节制闸", "type": "2", "longitude": "120.58143776621554", "latitude": "29.982081115139913" }, "geometry": { "type": "Point", "coordinates": [ 120.58143776621554, 29.982081115139913 ] } },
+        { "type": "Feature", "properties": { "name": "南门泵站", "type": "1", "longitude": "120.58217920610785", "latitude": "29.982351714703327" }, "geometry": { "type": "Point", "coordinates": [ 120.58217920610785, 29.982351714703327 ] } },
+        { "type": "Feature", "properties": { "name": "东廓节制闸", "type": "2", "longitude": "120.59881594436432", "latitude": "29.991129740218753" }, "geometry": { "type": "Point", "coordinates": [ 120.59881594436432, 29.991129740218753 ] } },
+        { "type": "Feature", "properties": { "name": "螺丝畈节制闸", "type": "1", "longitude": "120.56862153689016", "latitude": "29.99512163968131" }, "geometry": { "type": "Point", "coordinates": [ 120.56862153689016, 29.99512163968131 ] } },
+        { "type": "Feature", "properties": { "name": "螺丝畈节制闸", "type": "2", "longitude": "120.56862153689016", "latitude": "29.99512163968131" }, "geometry": { "type": "Point", "coordinates": [ 120.56862153689016, 29.99512163968131 ] } },
+        { "type": "Feature", "properties": { "name": "虎山桥节制闸", "type": "2", "longitude": "120.56826107565827", "latitude": "30.00428242495352" }, "geometry": { "type": "Point", "coordinates": [ 120.56826107565827, 30.00428242495352 ] } },
+        { "type": "Feature", "properties": { "name": "稽山节制闸", "type": "2", "longitude": "120.59743403760817", "latitude": "29.982596641475887" }, "geometry": { "type": "Point", "coordinates": [ 120.59743403760817, 29.982596641475887 ] } },
+        { "type": "Feature", "properties": { "name": "东廓泵站", "type": "1", "longitude": "120.59899144811098", "latitude": "29.991684212791174" }, "geometry": { "type": "Point", "coordinates": [ 120.59899144811098, 29.991684212791174 ] } },
+        { "type": "Feature", "properties": { "name": "西街门节制闸", "type": "2", "longitude": "120.587521382556", "latitude": "30.00775809075949" }, "geometry": { "type": "Point", "coordinates": [ 120.587521382556, 30.00775809075949 ] } },
+        { "type": "Feature", "properties": { "name": "林木市场泵站", "type": "1", "longitude": "120.5963517641943", "latitude": "29.98768631184737" }, "geometry": { "type": "Point", "coordinates": [ 120.5963517641943, 29.98768631184737 ] } },
+        { "type": "Feature", "properties": { "name": "罗门节制闸", "type": "2", "longitude": "120.58702265799712", "latitude": "29.98295666195967" }, "geometry": { "type": "Point", "coordinates": [ 120.58702265799712, 29.98295666195967 ] } },
+        { "type": "Feature", "properties": { "name": "螺丝畈泵站", "type": "1", "longitude": "120.56949063793951", "latitude": "29.994278038052556" }, "geometry": { "type": "Point", "coordinates": [ 120.56949063793951, 29.994278038052556 ] } },
+        { "type": "Feature", "properties": { "name": "进水口1", "type": "3", "longitude": "120.56874983800596", "latitude": "30.01367783612772" }, "geometry": { "type": "Point", "coordinates": [ 120.56874983800596, 30.01367783612772 ] } },
+        { "type": "Feature", "properties": { "name": "进水口2", "type": "3", "longitude": "120.56886904395", "latitude": "30.004814533980564" }, "geometry": { "type": "Point", "coordinates": [ 120.56886904395, 30.004814533980564 ] } },
+        { "type": "Feature", "properties": { "name": "进水口3", "type": "3", "longitude": "120.58235740837765", "latitude": "29.98199463491148" }, "geometry": { "type": "Point", "coordinates": [ 120.58235740837765, 29.98199463491148 ] } },
+        { "type": "Feature", "properties": { "name": "进水口5", "type": "3", "longitude": "120.59888677149443", "latitude": "29.99139868679062" }, "geometry": { "type": "Point", "coordinates": [ 120.59888677149443, 29.99139868679062 ] } },
+        { "type": "Feature", "properties": { "name": "进水口4", "type": "3", "longitude": "120.59770754841587", "latitude": "29.98262038625984" }, "geometry": { "type": "Point", "coordinates": [ 120.59770754841587, 29.98262038625984 ] } },
+    ]
+}

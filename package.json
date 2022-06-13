@@ -1,0 +1,33 @@
+{
+  "name": "Svelte-Beerui-Admin",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit dev --host",
+    "build": "svelte-kit build",
+    "preview": "svelte-kit preview"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^1.0.0-next.32",
+    "@sveltejs/kit": "^1.0.0-next.345",
+    "@vitejs/plugin-legacy": "^1.7.1",
+    "autoprefixer": "^10.3.7",
+    "cookie": "^0.4.1",
+    "cssnano": "^5.0.8",
+    "env-cmd": "^10.1.0",
+    "esbuild": "^0.14.25",
+    "postcss": "^8.3.9",
+    "postcss-load-config": "^3.1.0",
+    "sass": "^1.44.0",
+    "svelte": "^3.48.0",
+    "svelte-preprocess": "^4.10.5",
+    "uuid": "^8.3.2"
+  },
+  "type": "module",
+  "dependencies": {
+    "@brewer/beerui": "^1.0.30-next.55",
+    "@sveltejs/site-kit": "^2.0.3",
+    "axios": "^0.24.0",
+    "eslint-plugin-svelte3": "^3.2.1",
+    "svelte-i18n": "^3.3.13"
+  }
+}

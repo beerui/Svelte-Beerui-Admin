@@ -1,0 +1,19 @@
+{
+  "zh_cn": "English",
+  "page": {
+    "home": "首页",
+    "capabilities": "能力",
+    "resource": "资源",
+    "contact": "联系我们",
+    "about": "关于我们",
+    "RapidPrototyping": "Rapid Prototyping",
+    "CNCMachining": "CNC Machining",
+    "SheetMetal": "Sheet Metal",
+    "MetalCasting": "Metal Casting",
+    "RapidTooling": "Rapid Tooling",
+    "Materials": "Materials",
+    "Industries": "Industries",
+    "AboutUs": "About US",
+    "QualityAssurance": "Quality Assurance"
+  }
+}

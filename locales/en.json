@@ -1,0 +1,19 @@
+{
+  "en": "中文",
+  "page": {
+    "home": "Home",
+    "capabilities": "Capabilities",
+    "resource": "Resource",
+    "contact": "Contact",
+    "about": "About",
+    "RapidPrototyping": "Rapid Prototyping",
+    "CNCMachining": "CNC Machining",
+    "SheetMetal": "Sheet Metal",
+    "MetalCasting": "Metal Casting",
+    "RapidTooling": "Rapid Tooling",
+    "Materials": "Materials",
+    "Industries": "Industries",
+    "AboutUs": "About US",
+    "QualityAssurance": "Quality Assurance"
+  }
+}
