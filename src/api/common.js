@@ -1,13 +1,12 @@
 import request from "$utils/request.js"
-import { USER_MANAGE } from "../utils/config.js";
 
 /**
  * 登录
  * @param data {{account: string, password: string}}
  */
-export function web_login(data) {
+export function login(data) {
   return request({
-    url: USER_MANAGE + '/user/open/login/web_login',
+    url: '/api/login',
     method: 'post',
     data: data
   })
@@ -17,17 +16,18 @@ export function web_login(data) {
  */
 export function log_out() {
   return request({
-    url: USER_MANAGE + '/user/base/log_out',
+    url: '/user/base/log_out',
     method: 'get'
   })
 }
 /**
  * 获取当前用户的基本信息
  */
-export function user_current_info() {
+export function user_current_info(params) {
   return request({
-    url: USER_MANAGE + '/user/base/user_current_info',
-    method: 'get'
+    url: '/api/user_current_info',
+    method: 'get',
+    params
   })
 }
 /**

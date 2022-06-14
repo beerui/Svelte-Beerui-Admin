@@ -3,6 +3,8 @@ import {
     GET_MENU_ACTIVE,
     GET_MENU_COLLAPSE,
     getToken,
+    getRole,
+    setRole,
     SET_MENU_ACTIVE,
     SET_MENU_COLLAPSE,
     setToken
@@ -10,7 +12,8 @@ import {
 import { browser } from '$app/env';
 import { computedRouter } from "$utils/index";
 // import router from "../utils/router.js"; // TODO: 打开权限路由后删除
-
+// 当前登录用户
+export const CURRENT_ROLE =  writable(browser ? getRole() : ''); 
 // 登录状态
 export const LOGIN_LOADING_STATUS = writable(false)
 // 展示平台状态
@@ -56,6 +59,7 @@ MENU.subscribe(items => SET_MENU_ACTIVE(items))
 COLLAPSE.subscribe(items => SET_MENU_COLLAPSE(items))
 if (browser) {
     TOKEN.subscribe(value => setToken(value))
+    CURRENT_ROLE.subscribe(value => setRole(value))
 }
 
 // 活水调度左侧菜单 展示隐藏

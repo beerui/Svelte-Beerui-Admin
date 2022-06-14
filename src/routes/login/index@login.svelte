@@ -55,12 +55,13 @@
       <input type="password" placeholder="请输入用户名" bind:value={formData.password} class="ipt">
       <span class="light"/>
     </div>
-    <div class="g-remember w-full flex justify-between">
+    <div class="g-remember w-full">
       <div class="remember-pwd flex items-center" on:click={remember}>
         <div class="checkbox" class:checked={checked}></div>
         <span>记住密码</span>
       </div>
-      <!-- <p class="forget-pwd">忘记密码</p> -->
+      <p class="forget-pwd">账号 : admin  密码 : 随便填</p>
+      <p class="forget-pwd">账号 : editor 密码 : 随便填</p>
     </div>
     <button class="btn" class:can-click={formData.account && formData.password && !$LOGIN_LOADING_STATUS} on:click={submit}>登录</button>
   </div>
@@ -198,7 +199,7 @@
       .btn {
         width: 368px;
         height: 64px;
-        margin-top: 80px;
+        margin-top: 40px;
         color: #ffffff;
         font-size: 22px;
         letter-spacing: 2px;

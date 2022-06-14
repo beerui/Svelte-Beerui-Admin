@@ -37,7 +37,8 @@ const config = {
             resolve: {
                 alias: {
                     $utils: path.resolve('./src/utils'),
-                    $api: path.resolve('./src/api')
+                    $api: path.resolve('./src/api'),
+                    $lib: path.resolve('./src/lib')
                 }
             },
             server: {

@@ -1,9 +1,8 @@
 <div>
   <slot />
 </div>
-<style global lang="scss">
-  :global(body) {background: #030f2e;}
+<style lang="scss">
   .g-warp {
-      background: #030f2e;min-width: 1900px;
+    min-height:100vh;height:100%;background: #030f2e;min-width: 1900px;
   }
 </style>

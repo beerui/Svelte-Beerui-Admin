@@ -1,6 +1,6 @@
 const isDev = process.env.NODE_ENV === 'development'
 
-export const baseUrl = isDev ? '/prod-api' : ''
+export const baseUrl = ''
 export const AUTH_MANAGE = isDev ? '/auth-manage' : '/auth-manage'
 export const USER_MANAGE = isDev ? '/user-manage' : '/user-manage'
 export const ROLE_MANAGE = isDev ? 'role-manage' : '/role-manage'

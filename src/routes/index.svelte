@@ -1,5 +1,5 @@
 <script>
 </script>
 <div>
-	首页
+	欢迎来到Svelte-Beerui-admin
 </div>
