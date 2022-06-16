@@ -23,11 +23,11 @@
   }
   const userHandler = () => {
     showUser = !showUser;
-    active = 3
+    active = 1
   }
   const closeUserHandler = () => {
     showUser = false
-    if(!showUser) active = -1
+    active = -1
   }
   function clickOutside(node, params) {
     document.addEventListener('click', (e) => {
@@ -49,7 +49,7 @@
     <div class="header-logo">Svelte-Beerui-admin</div>
   </div>
  <div class="header-right">
-  <div class="user cursor-pointer" class:active={active === 3} on:click={userHandler} use:clickOutside={{ cb: closeUserHandler }}>
+  <div class="user cursor-pointer" class:active={active === 1} on:click={userHandler} use:clickOutside={{ cb: closeUserHandler }}>
     <img src="/assets/default_header.png" alt="">
     <span>{$CURRENT_ROLE}</span>
     {#if showUser}

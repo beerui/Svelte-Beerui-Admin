@@ -16,6 +16,8 @@ import { computedRouter } from "$utils/index";
 export const CURRENT_ROLE =  writable(browser ? getRole() : ''); 
 // 登录状态
 export const LOGIN_LOADING_STATUS = writable(false)
+// tagsView
+export const TAGS_VIEW = writable([])
 // 展示平台状态
 export const THEME_LOADING_STATUS = writable(false)
 // 管理平台状态
@@ -61,6 +63,5 @@ if (browser) {
     TOKEN.subscribe(value => setToken(value))
     CURRENT_ROLE.subscribe(value => setRole(value))
 }
-
 // 活水调度左侧菜单 展示隐藏
 export const IsShowWaterNavBar = writable({ key: 'left_nav', value: false });

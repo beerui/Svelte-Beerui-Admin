@@ -7,6 +7,8 @@ export default [
         hidden: false,
         icon: 'home',
         roles: ['admin', 'editor'],
+        //  if set true, the tag will affix in the tags-view
+        meta: { affix: false },
         children: []
     },
     {
@@ -14,6 +16,7 @@ export default [
         title: '系统管理',
         parentId: null,
         id: '8',
+        redirect: true,
         icon: 'system',
         hidden: false,
         roles: ['admin', 'editor'],
@@ -44,6 +47,56 @@ export default [
         title: '角色管理',
         parentId: '8',
         id: '8-3',
+        roles: ['admin'],
+        icon: '',
+        hidden: false,
+        children: []
+    },
+    {
+        path: '/system/role1',
+        title: '角色管理1',
+        parentId: '8',
+        id: '8-4',
+        roles: ['admin'],
+        icon: '',
+        hidden: false,
+        children: []
+    },
+    {
+        path: '/system/role2',
+        title: '角色管理2',
+        parentId: '8',
+        id: '8-5',
+        roles: ['admin'],
+        icon: '',
+        hidden: false,
+        children: []
+    },
+    {
+        path: '/system/role3',
+        title: '角色管理字长一点啊啊啊啊啊',
+        parentId: '8',
+        id: '8-6',
+        roles: ['admin'],
+        icon: '',
+        hidden: false,
+        children: []
+    },
+    {
+        path: '/system/role4',
+        title: '角色管理字长一点啊啊啊啊啊',
+        parentId: '8',
+        id: '8-7',
+        roles: ['admin'],
+        icon: '',
+        hidden: false,
+        children: []
+    },
+    {
+        path: '/system/role5',
+        title: '角色管理字长一点啊啊啊啊啊',
+        parentId: '8',
+        id: '8-8',
         roles: ['admin'],
         icon: '',
         hidden: false,

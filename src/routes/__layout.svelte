@@ -1,4 +1,5 @@
 <script>
+	import TagsView from './../lib/admin/tagsView.svelte';
 	import Breadcrumb from "$lib/admin/breadcrumb.svelte";
 	import Header from "$lib/admin/header.svelte";
 	import Slider from "$lib/admin/slider.svelte";
@@ -42,21 +43,25 @@
 			<Header />
 			<div class="g-admin-main">
 					<Slider />
-					<div class="g-right-container">
-							<div class="breadcrumb">
-									<Breadcrumb />
-							</div>
-							<div class="g-right-container-main relative">
-									{#if isMount}
-									<slot />
-									{/if}
-							</div>
+					<div class="g-right">
+					<TagsView />
+						<div class="g-right-container">
+								<div class="breadcrumb">
+										<Breadcrumb />
+								</div>
+								<div class="g-right-container-main relative">
+										{#if isMount}
+										<slot />
+										{/if}
+								</div>
+						</div>
 					</div>
 			</div>
 	</div>
 
 	<style global lang="scss">
 		@import "../app.scss";
+		@import "@brewer/beerui/assets/beer.css";
 			@font-face {
 			font-family: 'iconfont';  /* Project id 2656648 */
 			src: url('//at.alicdn.com/t/font_2656648_6wd0jltbp8v.woff2?t=1652514156201') format('woff2'),
@@ -76,13 +81,25 @@
 							display: flex;
 					}
 			}
+			.g-right {
+				width: 100%;
+				.tags-view-item {
+					.icon-close {
+						.be-icon-close:before {
+							transform: scale(.8);
+							display: inline-block;
+							vertical-align: -2px;
+						}
+					}
+				}
+			}
 			.g-right-container {
 					padding: 16px 25px;
 					box-sizing: border-box;
 					display: flex;
 					flex-direction: column;
 					flex: 1;
-					height: calc(100vh - 56px);
+					height: calc(100vh - 92px);
 					overflow-y: scroll;
 					&-main {
 							margin-top: 18px;
