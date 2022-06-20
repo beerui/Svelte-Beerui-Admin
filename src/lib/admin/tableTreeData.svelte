@@ -12,28 +12,33 @@ const dispatch = createEventDispatcher()
 let width = '0%'
 let checked = false
 width = (100 / header.length) + '%'
-const show = (index) => {
-  const list = data[index].children
-  if(!lazy) {
-    if(!list || list.length < 0) return
-    data[index].showChildren = !!!data[index].showChildren
-    if(!data[index].showChildren) setChildren(list)
-    data = data
-  } else {
-    const item = data[index]
-    if(item.children && item.children.length > 0) {
-      data[index].showChildren = !!!data[index].showChildren
-      setChildren(item.children)
-      data = data
-    } else {
-      lazyLoad(item).then(res => {
-        data[index].showChildren = !!!data[index].showChildren
-        data[index].children = res
-        setChildren(data[index].children)
-        data = data
-      })
-    }
-  }
+const expanded = async (index) => {
+  const item = data[index]
+  let list = item.children || []
+  item.showChildren = !item.showChildren
+  if(lazy && (!list || list.length < 0)) { list = await lazyLoad(item); item.children = list }
+  setChildren(list)
+  data = data
+  // if(!lazy) {
+  //   if(!list || list.length < 0) return
+  //   data[index].showChildren = !!!data[index].showChildren
+  //   if(!data[index].showChildren) setChildren(list)
+  //   data = data
+  // } else {
+  //   const item = data[index]
+  //   if(item.children && item.children.length > 0) {
+  //     data[index].showChildren = !!!data[index].showChildren
+  //     setChildren(item.children)
+  //     data = data
+  //   } else {
+  //     lazyLoad(item).then(res => {
+  //       data[index].showChildren = !!!data[index].showChildren
+  //       data[index].children = res
+  //       setChildren(data[index].children)
+  //       data = data
+  //     })
+  //   }
+  // }
 }
 const setChildren = (list) => {
   list.forEach(item => {
@@ -44,7 +49,7 @@ const setChildren = (list) => {
   })
 }
 const change = (index) => {
-  data[index].checked = !!!data[index].checked
+  data[index].checked = !data[index].checked
   data = data
   getCheckedList(data[index])
   dispatch("select", checkList)
@@ -105,7 +110,7 @@ const getCheckedList = (data) => {
               </div>
               {/if}
               {#if (row.children && row.children.length > 0) || row.hasChild}
-              <div class="icon" class:rotate = {row.showChildren} on:click={ () => { show(i)} }>
+              <div class="icon" class:rotate = {row.showChildren} on:click={ () => { expanded(i)} }>
                 <BeIcon name="chevron-right" />
               </div>
               {:else}

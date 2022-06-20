@@ -7,14 +7,14 @@
 	import { navigating, page } from '$app/stores';
 	import { PreloadingIndicator } from '@sveltejs/site-kit';
 	import { MENU, ROUTER_MAP } from "$lib/stores";
-	import { CURRENT_ROLE } from "$lib/stores";
+	import { TOKEN } from "$lib/stores";
 	import { getCurrent } from "$utils/login";
 	import { isPermissionRoute, loginOut } from "../utils/login.js";
 	let isMount = false
 	let isLogin = false
 	onMount(async () => {
 		isMount = true
-		if ($CURRENT_ROLE) {
+		if ($TOKEN) {
 			isLogin = await getCurrent()
 			if (!isLogin) loginOut()
 			// 进入admin的时候 定位一次菜单的active
@@ -83,12 +83,23 @@
 			}
 			.g-right {
 				width: 100%;
-				.tags-view-item {
-					.icon-close {
-						.be-icon-close:before {
-							transform: scale(.8);
-							display: inline-block;
-							vertical-align: -2px;
+				.tags-view-container {
+					::-webkit-scrollbar-thumb {
+						background-color: transparent;
+						border-radius: 4px;
+					}
+					&:hover {
+						::-webkit-scrollbar-thumb {
+							background-color: rgba(144,147,153,.2);
+						}
+					}
+					.tags-view-item {
+						.icon-close {
+							.be-icon-close:before {
+								transform: scale(.8);
+								display: inline-block;
+								vertical-align: -2px;
+							}
 						}
 					}
 				}
@@ -99,7 +110,7 @@
 					display: flex;
 					flex-direction: column;
 					flex: 1;
-					height: calc(100vh - 92px);
+					height: calc(100vh - 98px);
 					overflow-y: scroll;
 					&-main {
 							margin-top: 18px;

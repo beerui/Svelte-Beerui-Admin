@@ -1,17 +1,16 @@
-import { getToken, removeRole, getRole } from "./auth.js";
+import { getToken, removeToken, setToken } from "./auth.js";
 import { goto } from "$app/navigation";
-import { log_out, user_current_info, login } from "../api/common.js";
+import { user_current_info, login } from "../api/common.js";
 import { openNotice } from "./index.js";
 import {
     LOGIN_LOADING_STATUS,
     PERMISSION_ROUTER,
-    PERMISSION_THEME_ROUTER,
     ROUTER_MAP,
-    CURRENT_ROLE
+    TOKEN
 } from "../lib/stores.js";
 
 export function loginOut(message = '退出成功') {
-    removeRole()
+    removeToken()
     goto('/login', { replaceState: true })
 }
 
@@ -19,7 +18,8 @@ export async function loginIn(query) {
     LOGIN_LOADING_STATUS.set(true)
     login(query).then(async (res) => {
         if(res) {
-            CURRENT_ROLE.set(res)
+            TOKEN.set(res)
+            setToken(res)
             await getCurrent()
             let _admin_menu = [] // 管理后台 权限路由
             PERMISSION_ROUTER.subscribe(items => _admin_menu = items)
@@ -77,7 +77,7 @@ export const openPageRedirect = (list) => {
 }
 export function getCurrent() {
     return new Promise((resolve, reject) => {
-        user_current_info({type: getRole()}).then(res => {
+        user_current_info().then(res => {
             PERMISSION_ROUTER.set(res) // 权限路由
             resolve(true)
         })

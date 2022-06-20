@@ -3,7 +3,7 @@
     import Icon from "$lib/icon/Icon.svelte";
 
     export let menus = []
-    const isChildHidden = menus => menus.some(el => el.hidden)
+    const isChildHidden = menus => menus.every(el => el.hidden)
 </script>
 {#each menus as menu, index}
   {#if !menu.children || menu.children.length === 0 || isChildHidden(menu.children)}
@@ -27,12 +27,12 @@
             <Icon name={menu.icon}/>
           </div>
           <div slot="title">{menu.title}</div>
-          <svelte:self menus={menu.children}/>
+          <svelte:self menus="{menu.children}"/>
         </BeSubMenu>
       {:else}
         <BeSubMenu id={menu.id}>
           <div slot="title">{menu.title}</div>
-          <svelte:self menus={menu.children}/>
+          <svelte:self menus="{menu.children}"/>
         </BeSubMenu>
       {/if}
     {/if}

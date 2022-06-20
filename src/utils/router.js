@@ -43,6 +43,16 @@ export default [
         children: []
     },
     {
+        path: '/system/add',
+        title: '用户新增',
+        parentId: '8-2',
+        id: '8-2-1',
+        roles: ['admin'],
+        icon: '',
+        hidden: true,  
+        children:[]
+    },
+    {
         path: '/system/role',
         title: '角色管理',
         parentId: '8',
@@ -94,7 +104,7 @@ export default [
     },
     {
         path: '/system/role5',
-        title: '角色管理字长一点啊啊啊啊啊',
+        title: '测试用户',
         parentId: '8',
         id: '8-8',
         roles: ['admin'],

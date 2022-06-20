@@ -1,7 +1,7 @@
 <script>
   import { cubicInOut } from 'svelte/easing';
   import { BeIcon } from '@brewer/beerui';
-	import { CURRENT_ROLE } from "../stores.js";
+	import { TOKEN } from "../stores.js";
   import { loginOut } from '$utils/login.js';
   let showUser = false
   let active = -1
@@ -18,7 +18,7 @@
     };
   }
   const changeRole = async (type) => {
-    CURRENT_ROLE.set(type)
+    TOKEN.set(type)
     window.location.reload()
   }
   const userHandler = () => {
@@ -51,7 +51,9 @@
  <div class="header-right">
   <div class="user cursor-pointer" class:active={active === 1} on:click={userHandler} use:clickOutside={{ cb: closeUserHandler }}>
     <img src="/assets/default_header.png" alt="">
-    <span>{$CURRENT_ROLE}</span>
+    <!-- This is because the current role is used as token -->
+    <!-- you can adjust it according to your needs -->
+    <span>{$TOKEN}</span>
     {#if showUser}
      <div class="user-dialog" on:click|stopPropagation in:zoomIn="{{duration: 250}}" out:zoomIn="{{duration: 250}}">
       <div class="tab-header">个人角色</div>
@@ -61,7 +63,7 @@
             <img src="/assets/default_header.png" class="img">
             <span>admin</span>
           </div>
-          {#if $CURRENT_ROLE === 'admin'}
+          {#if $TOKEN === 'admin'}
           <BeIcon name='check' color='#1890FF' />
           {/if}
         </div>
@@ -70,7 +72,7 @@
             <img src="/assets/default_header.png" class="img">
             <span>editor</span>
           </div>
-          {#if $CURRENT_ROLE === 'editor'}
+          {#if $TOKEN === 'editor'}
           <BeIcon name='check' color='#1890FF' />
           {/if}
         </div>

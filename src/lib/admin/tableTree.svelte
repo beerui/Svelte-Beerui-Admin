@@ -6,10 +6,7 @@ export let data = []
 export let selection = true
 export let lazy = false
 export let lazyLoad
-let width = 0
-let checked = false
-width = (100 / header.length) + '%'
-console.log(data);
+
 const selectionChange = (e) => {
   console.log(e);
 }

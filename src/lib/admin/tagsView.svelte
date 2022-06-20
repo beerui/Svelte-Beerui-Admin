@@ -17,9 +17,11 @@
     Object.keys(ROUTER_MAP).forEach(key => {
       const data = ROUTER_MAP[key]
       if(data.meta && data.meta.affix) {
-        const { id, title, path } = data
+        const { id, title, path, hidden, parentId } = data
         tagsList.push({
           title: title,
+          hidden: hidden,
+          parentId: parentId,
           id: id,
           path: path,
           showClose: false
@@ -33,9 +35,11 @@
     if(isHasPath(curPath)) return
     const result = getPageInfoByPath(curPath)
     if(!result) return
-    const { id, title, path } = result
+    const { id, title, path, hidden, parentId } = result
     tagsList.push({
       title: title,
+      hidden: hidden,
+      parentId: parentId,
       id: id,
       path: path,
       showClose: true
@@ -49,11 +53,11 @@
     const key = list.find(item => ROUTER_MAP[item].path === path)
     return ROUTER_MAP[key]
   }
-  // check path exist
+  // Check path exist
   const isHasPath = (path) => {
     return tagsList.some(item => item.path === path)
   }
-  // move tag to view
+  // Move tag into view
   const moveToCurrentTag = async () => {
     await tick()
     const tagNodeList = document.querySelectorAll(".tags-view-item")
@@ -101,7 +105,24 @@
   const goSelectedTag = (item) => {
     moveToCurrentTag()
     goto(item.path)
-    MENU.set({ active: item.id, type: 'update' })
+    let activeId = item.id
+    // the current page hidden, select parent id to highlight sidebar。 For example: add
+    if(item.hidden) activeId = findActiveId(item.parentId)
+    MENU.set({ active: activeId, type: 'update' })
+  }
+  const findActiveId = (parentId) => {
+    let activeId = null
+    for(const i in ROUTER_MAP) {
+      const data = ROUTER_MAP[i]
+      if(data.id === parentId && !data.hidden) {
+        activeId = data.id
+      }
+      // If the parent is hidden, find again
+      if(data.id === parentId && data.hidden) {
+        findActiveId(data.parentId)
+      }
+    }
+    return activeId
   }
   const closeSelectedTag = (item) => {
     tagsList = tagsList.filter(tag => tag.path !== item.path )
@@ -115,13 +136,14 @@
     if(!lastTag) lastTag = {path: '/', id: '1'}
     goSelectedTag(lastTag)
   } 
-
+  const handleScroll = (e) => {
+    // e.deltaY / 10 (scroll distance)
+    _scrollWrapper.scrollLeft = _scrollWrapper.scrollLeft + (e.deltaY / 10)
+  }
 </script>
 
-
-
 <div class="tags-view-container" bind:offsetWidth={_containerWidth}> 
-  <div class="tags-view-wrapper" class:collapse-close={$COLLAPSE.collapse} bind:this={_scrollWrapper}>
+  <div class="tags-view-wrapper" class:collapse-close={$COLLAPSE.collapse} bind:this={_scrollWrapper} on:mousewheel={handleScroll}>
     {#each tagsList as item, index}
     <div class="tags-view-item {item.path === curPath ? 'active':''}" data-path = {item.path} on:click={() => goSelectedTag(item)}> 
       <span>{item.title}</span> 
@@ -135,22 +157,21 @@
   </div>
 </div>
 
-
 <style lang="scss">
   .tags-view-container {
-    height: 36px;
-   	width: 100%;
+    width: 100%;
     background: #fff;
     border-bottom: 1px solid #d8dce5;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%);
-    box-sizing: border-box;
+    width: calc(100vw - 240px);
     .tags-view-wrapper {
+      height: 40px;
       overflow-x: auto;
       white-space: nowrap;
-      width: calc(100vw - 240px);
-      &.collapse-close {
-        width: calc(100vw - 64px);
-      }
+      // width: calc(100vw - 240px);
+    }
+    &.collapse-close {
+      width: calc(100vw - 64px);
     }
   }
   .tags-view-item {
@@ -165,7 +186,7 @@
     padding: 0 8px;
     font-size: 12px;
     margin-left: 5px;
-    margin-top: 4px;
+    margin-top: 6px;
     .icon-close {
       display: inline-block;
       width: 16px;

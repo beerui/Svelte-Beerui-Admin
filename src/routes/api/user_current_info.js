@@ -1,14 +1,18 @@
 import routers from '$utils/router'
-export async function get(request) {
-  const current = request.url.searchParams.get('type')
+// mock menu data
+export async function get({request}) {
+  // const current = request.url.searchParams.get('type')
+  const current = request.headers.get("token")
+  console.log(current);
+  const routerList = JSON.parse(JSON.stringify(routers))
   if(current === 'admin') {
     return {
-      body: { code:20000, data: getRouters(routers, 'admin') }
+      body: { code:20000, data: getRouters(routerList, 'admin') }
     }
   }
   if(current === 'editor') {
     return {
-      body: { code:20000, data: getRouters(routers, 'editor') }
+      body: { code:20000, data: getRouters(routerList, 'editor') }
     }
   }
   return {
@@ -28,11 +32,7 @@ const getRouters = (list, role) => {
 }
 
 const filterRouters = (list, role) => {
-  const arr = []
-  list.forEach(item => {
-    if(item.roles.includes(role)) {
-      arr.push(item)
-    }
+  return list.filter(item => {
+    return item.roles.includes(role)
   })
-  return arr
 }

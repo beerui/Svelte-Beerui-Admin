@@ -3,17 +3,13 @@ import {
     GET_MENU_ACTIVE,
     GET_MENU_COLLAPSE,
     getToken,
-    getRole,
-    setRole,
+    setToken,
     SET_MENU_ACTIVE,
-    SET_MENU_COLLAPSE,
-    setToken
+    SET_MENU_COLLAPSE
 } from '$utils/auth';
 import { browser } from '$app/env';
 import { computedRouter } from "$utils/index";
 // import router from "../utils/router.js"; // TODO: 打开权限路由后删除
-// 当前登录用户
-export const CURRENT_ROLE =  writable(browser ? getRole() : ''); 
 // 登录状态
 export const LOGIN_LOADING_STATUS = writable(false)
 // tagsView
@@ -43,10 +39,9 @@ export const USER_INFO = writable({
 });
 // 权限菜单
 export const PERMISSION_ROUTER = writable([]); // TODO: 打开权限路由后删除 router
-export const PERMISSION_THEME_ROUTER = writable([]); // TODO: 打开权限路由后删除 router
 // TODO: 打开权限路由后打开注释
 PERMISSION_ROUTER.subscribe(items => {
-    if (items.length > 0) computedRouter && computedRouter(items)
+  if (items && items.length > 0) computedRouter && computedRouter(items)
 })
 
 // TODO: 打开权限路由后删除
@@ -60,8 +55,7 @@ export const COLLAPSE = writable(GET_MENU_COLLAPSE());
 MENU.subscribe(items => SET_MENU_ACTIVE(items))
 COLLAPSE.subscribe(items => SET_MENU_COLLAPSE(items))
 if (browser) {
-    TOKEN.subscribe(value => setToken(value))
-    CURRENT_ROLE.subscribe(value => setRole(value))
+  TOKEN.subscribe(value => setToken(value))
 }
 // 活水调度左侧菜单 展示隐藏
 export const IsShowWaterNavBar = writable({ key: 'left_nav', value: false });

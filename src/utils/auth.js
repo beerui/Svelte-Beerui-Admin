@@ -5,26 +5,16 @@ const AccountKey = 'ACCOUNT_INFO'
 const WindKey = 'WIND_INFO'
 const MenuKey = 'MENU_ACTIVE'
 const CollapseKey = 'MENU_COLLAPSE'
-const RoleKey = 'role_type'
 export function setToken(token) {
     browser && localStorage.setItem(TokenKey, token)
 }
-export function setRole(role) {
-    browser && localStorage.setItem(RoleKey, role)
-}
 export function getToken() {
     return browser && (localStorage.getItem(TokenKey) || '')
-}
-export function getRole() {
-    return browser && (localStorage.getItem(RoleKey) || '')
 }
 export function removeToken() {
     setToken('')
 }
 
-export function removeRole() {
-    setRole('')
-}
 export function setAccount(data) {
     const account = { account: btoa(data.account || ''), password: btoa(data.password || '') }
     browser && localStorage.setItem(AccountKey, JSON.stringify(account))
