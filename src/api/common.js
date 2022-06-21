@@ -33,3 +33,36 @@ export function user_current_info(params) {
   })
 }
 
+/**
+ * 新增菜单
+ */
+ export function createMenu(data) {
+  return request({
+    url: '/api/menu/add',
+    method: 'post',
+    data
+  })
+}
+
+
+/**
+ * 修改菜单
+ */
+ export function updateMenu(data) {
+  return request({
+    url: '/api/menu/edit',
+    method: 'post',
+    data
+  })
+}
+/**
+ * 删除菜单
+ */
+ export function deleteMenu(data) {
+  return request({
+    url: '/api/menu/delete',
+    method: 'post',
+    data
+  })
+}
+

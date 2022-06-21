@@ -34,6 +34,7 @@ export const openNotice = ({ title = '提示', message = '提示信息', type = 
     showNotice({
         toast,
         title,
+        position,
         message,
         type,
         duration

@@ -91,9 +91,7 @@ html {
   &-white {color: #ffffff;}
 }
 .icon_toolbar {background: url("/assets/icon_toolbar.png") 0 0 no-repeat;}
-.be-loading-mask {
-  background-color: hsl(0deg 0% 100% / 16%);
-}
+
 .m-water-container {
   .be-tabs__item {color: #fff;width: 126px;height: 40px;background: url("/assets/icon_toolbar.png") 0 -1070px no-repeat;transition: none;cursor: pointer;}
   .be-tabs__item.is-active {background-position: 0 -995px;color: #fff;}
