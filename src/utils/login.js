@@ -1,4 +1,4 @@
-import { getToken, removeToken, setToken } from "./auth.js";
+import { removeToken, setToken } from "./auth.js";
 import { goto } from "$app/navigation";
 import { user_current_info, login } from "../api/common.js";
 import { openNotice } from "./index.js";
@@ -6,10 +6,12 @@ import {
     LOGIN_LOADING_STATUS,
     PERMISSION_ROUTER,
     ROUTER_MAP,
+    TAGS_VIEW,
     TOKEN
 } from "../lib/stores.js";
 
 export function loginOut(message = '退出成功') {
+    TAGS_VIEW.set([])
     removeToken()
     goto('/login', { replaceState: true })
 }
@@ -81,14 +83,5 @@ export function getCurrent() {
             PERMISSION_ROUTER.set(res) // 权限路由
             resolve(true)
         })
-    })
-}
-
-function expandThemeRoute(list, menu) {
-    list.forEach(el => {
-        menu.push(el)
-        if (el.children && el.children.length > 0) {
-            return expandThemeRoute(el.children, menu)
-        }
     })
 }

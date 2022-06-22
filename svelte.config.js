@@ -37,6 +37,7 @@ const config = {
             resolve: {
                 alias: {
                     $utils: path.resolve('./src/utils'),
+                    $mock: path.resolve('./src/mock'),
                     $api: path.resolve('./src/api'),
                     $lib: path.resolve('./src/lib')
                 }

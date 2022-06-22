@@ -8,8 +8,7 @@
 	import { PreloadingIndicator } from '@sveltejs/site-kit';
 	import { MENU, ROUTER_MAP } from "$lib/stores";
 	import { TOKEN } from "$lib/stores";
-	import { getCurrent } from "$utils/login";
-	import { isPermissionRoute, loginOut } from "../utils/login.js";
+	import { isPermissionRoute, loginOut, getCurrent } from "$utils/login";
 	let isMount = false
 	let isLogin = false
 	onMount(async () => {

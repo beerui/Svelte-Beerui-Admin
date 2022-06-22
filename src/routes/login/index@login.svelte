@@ -1,8 +1,7 @@
 <script>
-  import { onMount } from "svelte";
-  import { loginIn } from "../../utils/login.js";
-  import { removeAccount, setAccount } from "../../utils/auth.js";
-  import { LOGIN_LOADING_STATUS } from "../../lib/stores.js";
+  import { loginIn } from "$utils/login.js";
+  import { removeAccount, setAccount } from "$utils/auth.js";
+  import { LOGIN_LOADING_STATUS } from "$lib/stores.js";
 
   let checked = true
   let formData = {

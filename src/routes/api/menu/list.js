@@ -1,4 +1,4 @@
-import routers from '$utils/router'
+import routers from '$mock/router'
 
 export async function post({ request }) {
   const type = request.headers.get("token")

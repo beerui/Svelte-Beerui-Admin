@@ -9,7 +9,6 @@ import {
 } from '$utils/auth';
 import { browser } from '$app/env';
 import { computedRouter } from "$utils/index";
-// import router from "../utils/router.js"; // TODO: 打开权限路由后删除
 // 登录状态
 export const LOGIN_LOADING_STATUS = writable(false)
 // tagsView

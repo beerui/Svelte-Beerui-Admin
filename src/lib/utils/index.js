@@ -65,6 +65,5 @@ export const previewImages = (src, list) => {
     prevDom.addEventListener("click", () => previewImage.changeImage('prev'))
     nextDom.addEventListener("click", () => previewImage.changeImage('next'))
     previewImage.init(imgDom, list, src)
-    console.log(previewImage)
     body.appendChild(container)
 }

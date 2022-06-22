@@ -1,4 +1,4 @@
-import routers from '$utils/router'
+import routers from '$mock/router'
 // mock menu data
 export async function get({request}) {
   // const current = request.url.searchParams.get('type')
