@@ -20,10 +20,7 @@ export async function get({request}) {
 const getRouters = (list, role) => {
   const data = filterRouters(list, role)
   const result = data.filter(item => {
-    if(!item.children) el.children = []
-    item.children = data.filter(el => {
-      return item.id === el.parentId
-    })
+    item.children = data.filter(el => item.id === el.parentId)
     return !item.parentId
   })
   return result

@@ -65,4 +65,15 @@ export function user_current_info(params) {
     data
   })
 }
+/**
+ * 用户列表
+ */
+ export function fetchRoleList(data) {
+  return request({
+    url: '/api/role/list',
+    method: 'post',
+    data
+  })
+}
+
 

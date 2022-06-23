@@ -69,7 +69,7 @@ const handlerAdd = () => {
     drawerVisible = false
   })
 };
-const handlerDelete = (row) => {
+const handleDelete = (row) => {
   messageBox({
     message: '是否确认删除？',
     confirm: () => {
@@ -112,6 +112,9 @@ const initData = () => {
     sort: ''
   }
 }
+const resetList = () => {
+  form.title = ''
+}
 </script>
 
 <div class="page-list">
@@ -122,7 +125,7 @@ const initData = () => {
       </BeFormItem>
       <BeFormItem>
         <BeButton type='primary' on:click={ getList }>搜索</BeButton>
-        <BeButton>重置</BeButton>
+        <BeButton on:click = { resetList }>重置</BeButton>
       </BeFormItem>
     </BeForm>
   </div>
@@ -137,57 +140,57 @@ const initData = () => {
       <div slot="tableSlot2" class="flex" let:prop={row}>
         <div class="cursor-pointer m-view" on:click={() => openDrawer(row, 'add')}>新增</div>
         <div class="cursor-pointer m-view" on:click={() => openDrawer(row, 'edit')}>修改</div>
-        <div class="cursor-pointer m-view" on:click={() => handlerDelete(row)}>删除</div>
+        <div class="cursor-pointer m-view" on:click={() => handleDelete(row)}>删除</div>
       </div>
     </TableTree>
   </div>
-  <BeDrawer 
-  title={drawerType === 'add' ? '新增菜单' : '编辑菜单'} 
-  bind:visible={drawerVisible} 
-  size="580px" 
-  isShowClose={true}
->
-  <div class="be-drawer-container flex h-full">
-    <BeForm bind:model={drawerformData} {rules} bind:this={ruleFormDom} labelWidth="120px">
-      <BeFormItem label='上级菜单：'>
-        <BeSelectTree bind:data={tableTreeData} defaultProps={defaultProps} bind:value={drawerformData.parentId} nodeKey='id' />
-      </BeFormItem>
-      <BeFormItem label='菜单类型：'>
-        <BeRadioGroup bind:checked={drawerformData.type}>
-          <BeRadio label='1'>目录</BeRadio>
-          <BeRadio label='2'>页面</BeRadio>
-          <BeRadio label='3'>按钮</BeRadio>
-        </BeRadioGroup>
-      </BeFormItem>
-      <BeFormItem label='重定向：'>
-        <BeRadioGroup bind:checked={drawerformData.redirect}>
-          <BeRadio label='1'>是</BeRadio>
-          <BeRadio label='0'>否</BeRadio>
-        </BeRadioGroup>
-      </BeFormItem>
-      <BeFormItem label='是否隐藏：'>
-        <BeRadioGroup bind:checked={drawerformData.hidden}>
-          <BeRadio label='1'>是</BeRadio>
-          <BeRadio label='0'>否</BeRadio>
-        </BeRadioGroup>
-      </BeFormItem>
-      <BeFormItem label='菜单名称：' prop='title'>
-        <BeInput placeholder="eg:系统管理" bind:value={drawerformData.title}  />
-      </BeFormItem>
-      <BeFormItem label='权限标识：' prop='key'>
-        <BeInput placeholder="路由的name" bind:value={drawerformData.key}  />
-      </BeFormItem>
-      <BeFormItem label='路由地址：' prop='path'>
-        <BeInput placeholder="请输入路由地址（path）" bind:value={drawerformData.path}  />
-      </BeFormItem>
-      <!-- <BeFormItem label='排序：'>
-        <BeInput placeholder="菜单展示顺序" bind:value={drawerformData.sort}  />
-      </BeFormItem> -->
-      <BeFormItem style="text-align: right;">
-        <BeButton type="default" on:click={() => drawerVisible = false}>取 消</BeButton>
-        <BeButton type="primary" on:click={handleConfirm}>确 定</BeButton>
-      </BeFormItem>
-    </BeForm>
-  </div>
-</BeDrawer>
 </div>
+<BeDrawer 
+title={drawerType === 'add' ? '新增菜单' : '编辑菜单'} 
+bind:visible={drawerVisible} 
+size="580px" 
+isShowClose={true}
+>
+<div class="be-drawer-container flex h-full">
+  <BeForm bind:model={drawerformData} {rules} bind:this={ruleFormDom} labelWidth="120px">
+    <BeFormItem label='上级菜单：'>
+      <BeSelectTree bind:data={tableTreeData} defaultProps={defaultProps} bind:value={drawerformData.parentId} nodeKey='id' />
+    </BeFormItem>
+    <BeFormItem label='菜单类型：'>
+      <BeRadioGroup bind:checked={drawerformData.type}>
+        <BeRadio label='1'>目录</BeRadio>
+        <BeRadio label='2'>页面</BeRadio>
+        <BeRadio label='3'>按钮</BeRadio>
+      </BeRadioGroup>
+    </BeFormItem>
+    <BeFormItem label='重定向：'>
+      <BeRadioGroup bind:checked={drawerformData.redirect}>
+        <BeRadio label='1'>是</BeRadio>
+        <BeRadio label='0'>否</BeRadio>
+      </BeRadioGroup>
+    </BeFormItem>
+    <BeFormItem label='是否隐藏：'>
+      <BeRadioGroup bind:checked={drawerformData.hidden}>
+        <BeRadio label='1'>是</BeRadio>
+        <BeRadio label='0'>否</BeRadio>
+      </BeRadioGroup>
+    </BeFormItem>
+    <BeFormItem label='菜单名称：' prop='title'>
+      <BeInput placeholder="eg:系统管理" bind:value={drawerformData.title}  />
+    </BeFormItem>
+    <BeFormItem label='权限标识：' prop='key'>
+      <BeInput placeholder="路由的name" bind:value={drawerformData.key}  />
+    </BeFormItem>
+    <BeFormItem label='路由地址：' prop='path'>
+      <BeInput placeholder="请输入路由地址（path）" bind:value={drawerformData.path}  />
+    </BeFormItem>
+    <!-- <BeFormItem label='排序：'>
+      <BeInput placeholder="菜单展示顺序" bind:value={drawerformData.sort}  />
+    </BeFormItem> -->
+    <BeFormItem style="text-align: right;">
+      <BeButton type="default" on:click={() => drawerVisible = false}>取 消</BeButton>
+      <BeButton type="primary" on:click={handleConfirm}>确 定</BeButton>
+    </BeFormItem>
+  </BeForm>
+</div>
+</BeDrawer>

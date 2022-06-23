@@ -33,6 +33,6 @@ const getRouters = (list, role, params) => {
 }
 const filterRouters = (list, role, params) => {
   return list.filter(item => {
-    return item.roles.includes(role) && (item.title.indexOf(params.title) != -1)
+    return item.roles.includes(role) && (item.title.indexOf(params.title) !== -1)
   })
 }
